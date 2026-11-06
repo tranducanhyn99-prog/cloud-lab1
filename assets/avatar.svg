@@ -21,3 +21,4 @@
   <circle cx="145" cy="55" r="10" fill="#10b981" />
   <path d="M 140 55 L 144 59 L 151 51" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
 </svg>
+

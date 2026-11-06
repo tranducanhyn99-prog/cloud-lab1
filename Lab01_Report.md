@@ -2,12 +2,12 @@
 
 | Field | Details |
 | :--- | :--- |
-| **Student** | **Trần Đức Anh** – **23520001** |
+| **Student** | **Phạm Tuấn Anh** – **24110076** |
 | **Course** | Introduction to Cloud Computing |
 | **Lecturer** | Truong Thi Ngoc Phuong |
 | **Selected option** | Option B – GitHub Pages |
-| **Repository** | `github.com/USERNAME/cloud-lab1` |
-| **Public URL** | `https://USERNAME.github.io/cloud-lab1/` |
+| **Repository** | `github.com/tranducanhyn99-prog/cloud-lab1` |
+| **Public URL** | `https://tranducanhyn99-prog.github.io/cloud-lab1/` |
 | **Website title** | My First Cloud Website |
 
 This report contains the deployment evidence (E1–E4) and the written conceptual answers (E5) required by the lab rubric.
@@ -58,3 +58,4 @@ GitHub Pages fits closest to PaaS, although it is a very limited form of it. I s
 
 ### Q5. What changes would be needed for authentication or a database?
 A static host cannot run server-side code, so I would need a backend. One option is a managed service such as Firebase Authentication, Supabase or AWS Cognito, with the page calling its API over HTTPS using JavaScript. Another is a PaaS such as AWS Amplify, Render or Heroku running a Node.js or Python app with a database like PostgreSQL or DynamoDB. I would hash passwords, use sessions or tokens, keep secrets in environment variables instead of the repository, and configure CORS.
+

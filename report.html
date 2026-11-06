@@ -7,112 +7,237 @@
   <style>
     @page {
       size: A4;
-      margin: 20mm;
+      margin: 15mm;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       line-height: 1.6;
       color: #1e293b;
-      background-color: #f8fafc;
+      background-color: #f1f5f9;
       margin: 0;
-      padding: 2rem;
+      padding: 1.5rem;
+    }
+    .action-bar {
+      max-width: 840px;
+      margin: 0 auto 1.5rem;
+      background: #1e293b;
+      color: #ffffff;
+      padding: 0.9rem 1.5rem;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .action-bar-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-print {
+      background-color: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s;
+    }
+    .btn-print:hover {
+      background-color: #1d4ed8;
     }
     .report-container {
-      max-width: 800px;
+      max-width: 840px;
       margin: 0 auto;
       background: #ffffff;
-      padding: 3rem;
+      padding: 2.5rem 3rem;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
     h1 {
-      font-size: 1.8rem;
+      font-size: 1.75rem;
       color: #1e3a8a;
-      border-bottom: 2px solid #3b82f6;
-      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 0.4rem;
       margin-top: 0;
+      margin-bottom: 0.25rem;
     }
     .subtitle {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: #475569;
       margin-bottom: 1.5rem;
+      font-weight: 500;
     }
     table.meta-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
     }
     table.meta-table th, table.meta-table td {
       border: 1px solid #cbd5e1;
-      padding: 0.6rem 0.9rem;
+      padding: 0.55rem 0.85rem;
       text-align: left;
+      font-size: 0.95rem;
     }
     table.meta-table th {
-      background-color: #f1f5f9;
-      width: 30%;
+      background-color: #f8fafc;
+      width: 28%;
       color: #334155;
+      font-weight: 600;
+    }
+    .editable-input {
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      border: 1px dashed #94a3b8;
+      border-radius: 4px;
+      padding: 0.2rem 0.4rem;
+      width: 70%;
+      color: #1e3a8a;
+      background: #eff6ff;
     }
     h2 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: #0f172a;
       border-left: 4px solid #2563eb;
-      padding-left: 0.75rem;
+      padding-left: 0.65rem;
       margin-top: 2rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
     .evidence-desc {
       font-style: italic;
       color: #64748b;
-      margin-bottom: 0.75rem;
-      font-size: 0.95rem;
+      margin-bottom: 0.65rem;
+      font-size: 0.9rem;
     }
-    .screenshot-placeholder {
+    .screenshot-zone {
       border: 2px dashed #94a3b8;
-      border-radius: 6px;
-      padding: 2.5rem;
+      border-radius: 8px;
+      padding: 1.5rem;
       text-align: center;
       background-color: #f8fafc;
       color: #64748b;
       margin-bottom: 1.5rem;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s;
     }
-    .screenshot-placeholder img {
+    .screenshot-zone:hover {
+      border-color: #2563eb;
+      background-color: #eff6ff;
+    }
+    .screenshot-zone input[type="file"] {
+      display: none;
+    }
+    .screenshot-zone img {
       max-width: 100%;
       height: auto;
-      border-radius: 4px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      margin-top: 0.5rem;
+    }
+    .upload-hint {
+      display: block;
+      font-size: 0.85rem;
+      color: #2563eb;
+      font-weight: 500;
+      margin-top: 0.4rem;
     }
     .question-block {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 6px;
-      padding: 1.25rem;
+      padding: 1rem 1.25rem;
       margin-bottom: 1.25rem;
+      page-break-inside: avoid;
     }
     .question-title {
       font-weight: 700;
       color: #1e3a8a;
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
     }
     .question-answer {
       color: #334155;
-      font-size: 0.95rem;
+      font-size: 0.925rem;
       text-align: justify;
+      line-height: 1.6;
     }
+    
+    /* Print Optimization */
     @media print {
       body {
         background: #ffffff;
         padding: 0;
+      }
+      .action-bar {
+        display: none !important;
       }
       .report-container {
         box-shadow: none;
         padding: 0;
         max-width: 100%;
       }
+      .editable-input {
+        border: none;
+        background: transparent;
+        padding: 0;
+        color: #000000;
+      }
+      .upload-hint, .upload-placeholder-text {
+        display: none !important;
+      }
+      .screenshot-zone {
+        border: none;
+        padding: 0;
+        background: transparent;
+        margin-bottom: 1rem;
+      }
+      .screenshot-zone:empty {
+        border: 1px solid #ccc;
+        padding: 2rem;
+      }
+      h2 {
+        page-break-after: avoid;
+      }
+      .question-block {
+        border: 1px solid #cbd5e1;
+        background: #ffffff;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Top Action Toolbar (Hidden in Print/PDF) -->
+  <div class="action-bar">
+    <div class="action-bar-title">
+      <span>📄 <strong>Lab 01 Report Generator</strong> (Báo cáo thực hành Cloud)</span>
+    </div>
+    <div>
+      <button class="btn-print" onclick="window.print()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        In ra PDF (Ctrl + P)
+      </button>
+    </div>
+  </div>
+
   <div class="report-container">
     <h1>Lab 01 Report</h1>
     <div class="subtitle">Deploy Your First Static Website to the Cloud</div>
@@ -120,7 +245,11 @@
     <table class="meta-table">
       <tr>
         <th>Student</th>
-        <td><strong>Trần Đức Anh</strong> – <strong>23520001</strong></td>
+        <td>
+          <input type="text" id="studentNameInput" class="editable-input" value="Phạm Tuấn Anh" placeholder="Nhập họ và tên...">
+          –
+          <input type="text" id="studentIdInput" class="editable-input" style="width: 25%;" value="24110076" placeholder="MSSV...">
+        </td>
       </tr>
       <tr>
         <th>Course</th>
@@ -136,11 +265,11 @@
       </tr>
       <tr>
         <th>Repository</th>
-        <td><code>github.com/USERNAME/cloud-lab1</code></td>
+        <td><code>github.com/tranducanhyn99-prog/cloud-lab1</code></td>
       </tr>
       <tr>
         <th>Public URL</th>
-        <td><code>https://USERNAME.github.io/cloud-lab1/</code></td>
+        <td><code>https://tranducanhyn99-prog.github.io/cloud-lab1/</code></td>
       </tr>
       <tr>
         <th>Website Title</th>
@@ -148,34 +277,51 @@
       </tr>
     </table>
 
-    <p style="font-size: 0.95rem; color: #475569;">
+    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 1.5rem;">
       This report contains the deployment evidence (E1–E4) and the written conceptual answers (E5) required by the lab.
     </p>
 
+    <!-- Evidence 1 -->
     <h2>E1 – Desktop website</h2>
     <div class="evidence-desc">Full website with student name and ID visible.</div>
-    <div class="screenshot-placeholder">
-      [ Chèn ảnh chụp giao diện Desktop E1 tại đây ]
+    <div class="screenshot-zone" onclick="document.getElementById('fileE1').click()">
+      <span class="upload-placeholder-text">📷 Bấm vào đây để chọn ảnh chụp Desktop (E1)</span>
+      <span class="upload-hint">(Kéo thả hoặc nhấp để tải ảnh lên)</span>
+      <input type="file" id="fileE1" accept="image/*" onchange="previewImage(this, 'imgE1')">
+      <div id="imgE1"></div>
     </div>
 
+    <!-- Evidence 2 -->
     <h2>E2 – Mobile website</h2>
     <div class="evidence-desc">Narrow / mobile viewport (browser F12 &rarr; device toolbar).</div>
-    <div class="screenshot-placeholder">
-      [ Chèn ảnh chụp giao diện Mobile E2 tại đây ]
+    <div class="screenshot-zone" onclick="document.getElementById('fileE2').click()">
+      <span class="upload-placeholder-text">📱 Bấm vào đây để chọn ảnh chụp Mobile (E2)</span>
+      <span class="upload-hint">(Kéo thả hoặc nhấp để tải ảnh lên)</span>
+      <input type="file" id="fileE2" accept="image/*" onchange="previewImage(this, 'imgE2')">
+      <div id="imgE2"></div>
     </div>
 
+    <!-- Evidence 3 -->
     <h2>E3 – Hosting dashboard</h2>
     <div class="evidence-desc">GitHub repository &rarr; Settings &rarr; Pages, showing the site is live.</div>
-    <div class="screenshot-placeholder">
-      [ Chèn ảnh chụp màn hình GitHub Pages E3 tại đây ]
+    <div class="screenshot-zone" onclick="document.getElementById('fileE3').click()">
+      <span class="upload-placeholder-text">⚙️ Bấm vào đây để chọn ảnh chụp GitHub Pages Settings (E3)</span>
+      <span class="upload-hint">(Kéo thả hoặc nhấp để tải ảnh lên)</span>
+      <input type="file" id="fileE3" accept="image/*" onchange="previewImage(this, 'imgE3')">
+      <div id="imgE3"></div>
     </div>
 
+    <!-- Evidence 4 -->
     <h2>E4 – HTTPS verification</h2>
     <div class="evidence-desc">Address bar showing the public https:// URL (use an incognito window).</div>
-    <div class="screenshot-placeholder">
-      [ Chèn ảnh chụp thanh URL bảo mật HTTPS chế độ ẩn danh E4 tại đây ]
+    <div class="screenshot-zone" onclick="document.getElementById('fileE4').click()">
+      <span class="upload-placeholder-text">🔒 Bấm vào đây để chọn ảnh chụp thanh URL bảo mật HTTPS (E4)</span>
+      <span class="upload-hint">(Kéo thả hoặc nhấp để tải ảnh lên)</span>
+      <input type="file" id="fileE4" accept="image/*" onchange="previewImage(this, 'imgE4')">
+      <div id="imgE4"></div>
     </div>
 
+    <!-- Written Answers -->
     <h2>E5 – Written answers</h2>
 
     <div class="question-block">
@@ -213,5 +359,23 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function previewImage(input, containerId) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const container = document.getElementById(containerId);
+          container.innerHTML = `<img src="${e.target.result}" alt="Evidence screenshot">`;
+          const parentZone = input.closest('.screenshot-zone');
+          const placeholder = parentZone.querySelector('.upload-placeholder-text');
+          const hint = parentZone.querySelector('.upload-hint');
+          if (placeholder) placeholder.style.display = 'none';
+          if (hint) hint.textContent = '✅ Đã tải ảnh lên thành công (Bấm để đổi ảnh khác)';
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
 </body>
 </html>
