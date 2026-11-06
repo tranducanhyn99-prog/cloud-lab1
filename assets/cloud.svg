@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eff6ff" />
+      <stop offset="100%" stop-color="#dbeafe" />
+    </linearGradient>
+    <linearGradient id="cloudGradPrimary" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="cloudGradAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1e3a8a" flood-opacity="0.12" />
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background subtle glow -->
+  <circle cx="400" cy="280" r="220" fill="url(#skyGrad)" opacity="0.7" />
+
+  <!-- Connecting Data Lines / Bus -->
+  <g stroke="#93c5fd" stroke-width="2.5" stroke-dasharray="6 6" opacity="0.8">
+    <line x1="400" y1="260" x2="180" y2="400" />
+    <line x1="400" y1="260" x2="400" y2="430" />
+    <line x1="400" y1="260" x2="620" y2="400" />
+  </g>
+
+  <!-- Central Cloud Shape -->
+  <g filter="url(#softShadow)">
+    <path d="M 400 130 
+             C 445 130, 482 160, 492 202 
+             C 538 205, 575 243, 575 290 
+             C 575 340, 534 380, 485 380 
+             L 305 380 
+             C 255 380, 215 340, 215 290 
+             C 215 247, 246 211, 288 203 
+             C 305 160, 348 130, 400 130 Z" 
+          fill="url(#cloudGradPrimary)" />
+    
+    <!-- Secondary translucent highlight curve inside cloud -->
+    <path d="M 400 148 
+             C 438 148, 470 173, 479 210 
+             C 485 212, 492 215, 500 219 
+             C 460 215, 430 185, 395 185 
+             C 350 185, 320 215, 305 245 
+             C 300 220, 315 195, 340 170 
+             C 358 155, 378 148, 400 148 Z" 
+          fill="#ffffff" opacity="0.25" />
+  </g>
+
+  <!-- Cloud Interior Server / Data Icon -->
+  <g transform="translate(345, 215)">
+    <!-- Server Stack Top -->
+    <rect x="15" y="10" width="80" height="20" rx="4" fill="#ffffff" opacity="0.95" />
+    <circle cx="28" cy="20" r="3" fill="#10b981" />
+    <circle cx="38" cy="20" r="3" fill="#3b82f6" />
+    <rect x="52" y="18" width="32" height="4" rx="2" fill="#cbd5e1" />
+
+    <!-- Server Stack Middle -->
+    <rect x="15" y="38" width="80" height="20" rx="4" fill="#ffffff" opacity="0.95" />
+    <circle cx="28" cy="48" r="3" fill="#10b981" />
+    <circle cx="38" cy="48" r="3" fill="#3b82f6" />
+    <rect x="52" y="46" width="32" height="4" rx="2" fill="#cbd5e1" />
+
+    <!-- Server Stack Bottom -->
+    <rect x="15" y="66" width="80" height="20" rx="4" fill="#ffffff" opacity="0.95" />
+    <circle cx="28" cy="76" r="3" fill="#10b981" />
+    <circle cx="38" cy="76" r="3" fill="#3b82f6" />
+    <rect x="52" y="74" width="32" height="4" rx="2" fill="#cbd5e1" />
+
+    <!-- Security Lock Badge -->
+    <circle cx="85" cy="85" r="14" fill="#10b981" />
+    <path d="M 81 83 L 81 81 C 81 78.8 82.8 77 85 77 C 87.2 77 89 78.8 89 81 L 89 83 L 90.5 83 C 91.3 83 92 83.7 92 84.5 L 92 90.5 C 92 91.3 91.3 92 90.5 92 L 79.5 92 C 78.7 92 78 91.3 78 90.5 L 78 84.5 C 78 83.7 78.7 83 79.5 83 Z M 83 83 L 87 83 L 87 81 C 87 79.9 86.1 79 85 79 C 83.9 79 83 79.9 83 81 Z" fill="#ffffff" />
+  </g>
+
+  <!-- Left Node: Infrastructure (IaaS) -->
+  <g transform="translate(110, 360)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="140" height="90" rx="12" fill="url(#cardGrad)" stroke="#bfdbfe" stroke-width="2" />
+    <rect x="15" y="16" width="34" height="34" rx="8" fill="#dbeafe" />
+    <!-- Server Icon -->
+    <path d="M 22 27 L 42 27 M 22 33 L 42 33 M 22 39 L 42 39" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" />
+    <text x="60" y="32" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#1e293b">IaaS</text>
+    <text x="60" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Infrastructure</text>
+    <text x="15" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#3b82f6" font-weight="600">Compute &amp; Storage</text>
+  </g>
+
+  <!-- Center Node: Platform (PaaS) -->
+  <g transform="translate(330, 395)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="140" height="90" rx="12" fill="url(#cardGrad)" stroke="#bfdbfe" stroke-width="2" />
+    <rect x="15" y="16" width="34" height="34" rx="8" fill="#dbeafe" />
+    <!-- Code / Gear Icon -->
+    <path d="M 27 28 L 22 33 L 27 38 M 37 28 L 42 33 L 37 38" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="60" y="32" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#1e293b">PaaS</text>
+    <text x="60" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Platform</text>
+    <text x="15" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#2563eb" font-weight="600">Deploy &amp; Scale</text>
+  </g>
+
+  <!-- Right Node: Software (SaaS) -->
+  <g transform="translate(550, 360)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="140" height="90" rx="12" fill="url(#cardGrad)" stroke="#bfdbfe" stroke-width="2" />
+    <rect x="15" y="16" width="34" height="34" rx="8" fill="#dbeafe" />
+    <!-- App / Web Icon -->
+    <rect x="22" y="24" width="20" height="16" rx="2" stroke="#2563eb" stroke-width="2" />
+    <line x1="22" y1="29" x2="42" y2="29" stroke="#2563eb" stroke-width="1.5" />
+    <text x="60" y="32" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="15" fill="#1e293b">SaaS</text>
+    <text x="60" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#64748b">Software</text>
+    <text x="15" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" fill="#1d4ed8" font-weight="600">Ready-to-use Apps</text>
+  </g>
+
+  <!-- Floating Signal Dots -->
+  <circle cx="260" cy="340" r="4" fill="#3b82f6" />
+  <circle cx="400" cy="360" r="4" fill="#10b981" />
+  <circle cx="530" cy="340" r="4" fill="#6366f1" />
+</svg>
